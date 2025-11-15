@@ -1,0 +1,53 @@
+<!-- === Іра Лещук === -->
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Пожертвувати</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo">🐕 DogHelp</div>
+        <h1 style="margin: 0;">Пожертвувати</h1>
+      </header>
+      <div class="donate-layout">
+        <div class="donor-list">
+          <h2>Наші доброчинці</h2>
+          <ul>
+            <li><span>Олена</span><small>₴500</small></li>
+            <li><span>Сергій</span><small>₴200</small></li>
+            <li><span>Марія</span><small>₴1000</small></li>
+            <li><span>Дмитро</span><small>₴350</small></li>
+          </ul>
+        </div>
+
+        <div class="donate-benefits">
+          <h2>Чому варто допомагати</h2>
+          <ul>
+            <li>Кожна гривня рятує життя або тварину</li>
+            <li>Прозорість використання коштів</li>
+            <li>Ви стаєте частиною доброї спільноти</li>
+            <li>Підтримуєте розвиток соціальних проєктів</li>
+            <li>Ваш приклад надихає інших</li>
+          </ul>
+        </div>
+      </div>
+      <div class="donate-form">
+        <h2 class="form-title">Зробити пожертву</h2>
+        <form id="donateForm">
+          <input name="name" type="text" placeholder="Ваше ім’я" required />
+          <input name="amount" type="number" placeholder="Сума (грн)" required />
+          <button class="submit-btn" type="submit">Пожертвувати</button>
+        </form>
+        <a href="index.html" class="back-btn">← Повернутися на головну</a>
+        <div id="donateResult" class="small"></div>
+      </div>
+    </div>
+    <div class="water-bg"></div>
+    <script src="script.js"></script>
+    <script src="water.js"></script>
+  </body>
+</html>
