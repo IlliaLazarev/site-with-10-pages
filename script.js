@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let allDogs = [];
 
-  fetch('/data.json')
+  fetch('./data.json')
     .then(r => {
       if (!r.ok) throw new Error('Не вдалося завантажити data.json: ' + r.status);
       return r.json();
@@ -56,55 +56,9 @@ function renderDogCard(d) {
 
 function addAdoptListeners() {
   document.querySelectorAll('.adopt-btn').forEach(btn => {
-    btn.addEventListener('click', async (e) => {
+    btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const dogId = btn.dataset.id;
-      if (!dogId) {
-        console.error('Не знайдено dogId на кнопці', btn);
-        alert('Неможливо усиновити — відсутній ідентифікатор собаки.');
-        return;
-      }
-
-      const name = prompt('Введіть ваше ім’я:');
-      if (!name) return;
-
-      const phone = prompt('Ваш телефон (необовʼязково):');
-
-      try {
-        const resp = await fetch('/api/adopt', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ dogId, adopter: { name, phone } })
-        });
-
-        if (!resp.ok) {
-          let errText = `HTTP ${resp.status}`;
-          try {
-            const errJson = await resp.json();
-            errText = errJson.error || JSON.stringify(errJson);
-          } catch {
-            try { errText = await resp.text(); } catch {}
-          }
-          throw new Error(errText);
-        }
-
-        const res = await resp.json().catch(() => ({ error: 'Некоректна відповідь сервера' }));
-
-        if (res.success) {
-          const card = document.getElementById(`dog-${dogId}`);
-          if (card) {
-            const adoptBtn = card.querySelector('.adopt-btn');
-            if (adoptBtn) adoptBtn.outerHTML = `<div class="adopted">🐾 Усиновлено</div>`;
-          }
-          alert('Дякуємо! Заявка на усиновлення успішно відправлена.');
-        } else {
-          throw new Error(res.error || 'Сервер повідомив про помилку при усиновленні.');
-        }
-
-      } catch (err) {
-        console.error('Помилка при усиновленні:', err);
-        alert('Помилка при усиновленні: ' + (err.message || 'перевірте консоль та сервер'));
-      }
+      alert('Усиновлення доступне лише у локальній версії сайту 💛');
     });
   });
 }
