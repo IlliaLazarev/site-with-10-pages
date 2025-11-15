@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Борис",
+    "description": "Дружній та ласкавий",
+    "age": 2,
+    "image": "boris.jpg",
+    "adopted": false
+  },
+  {
+    "id": 2,
+    "name": "Рекс",
+    "description": "Сильний, але ніжний",
+    "age": 5,
+    "image": "recs.jpg",
+    "adopted": false
+  }
+]
