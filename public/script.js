@@ -54,15 +54,6 @@ function renderDogCard(d) {
   `;
 }
 
-function addAdoptListeners() {
-  document.querySelectorAll('.adopt-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      alert('Усиновлення доступне лише у локальній версії сайту 💛');
-    });
-  });
-}
-
 function escapeHtml(s) {
   if (!s) return '';
   return String(s)
