@@ -1,26 +1,27 @@
-:root {
-  --orange-light: #ffb067;
-  --orange-mid: #ffcf91;
-  --orange-dark: #f57c00;
-  --orange-highlight: #ff944d;
-
-  --yellow-1: #ffe680;
-  --yellow-2: #ffd65b;
-
-  --brown: #4a3000;
-
-  --blue-1: #2196f3;
-  --blue-2: #42a5f5;
-  --blue-3: #1976d2;
-
-  --white: #fff;
-  --gray-light: #f7f7f7;
-  --gray-mid: #ccc;
-
-  --shadow-soft: 0 4px 10px rgba(0, 0, 0, 0.1);
-  --shadow-orange: 0 4px 10px rgba(255, 180, 100, 0.3);
-  --radius: 16px;
+/* === Іра Лещук === */
+body {
+  --x: 50vw;
+  --y: 50vh;
+  background: radial-gradient(circle at var(--x) var(--y), #ffecb3, #ffcc80, #ffb74d);
+  background-attachment: fixed;
+  transition: background 0.1s ease;
 }
+
+.dog-photo {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -28,6 +29,7 @@ body {
   overflow-x: hidden;
   position: relative;
 }
+
 body::before {
   content: "";
   position: fixed;
@@ -39,187 +41,522 @@ body::before {
               rgba(255, 180, 120, 0.25),
               rgba(255, 210, 160, 0.1) 40%,
               transparent 70%);
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
   transition: top 0.3s ease, left 0.3s ease;
   pointer-events: none;
   z-index: 0;
 }
+
+/* Трохи тіні для контейнера */
 .container {
-  max-width: 1000px;
-  padding: 20px;
-  margin: auto;
   position: relative;
   z-index: 2;
 }
+
+
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background: linear-gradient(90deg, var(--orange-light), var(--orange-mid));
+  justify-content: space-between;
+  background: linear-gradient(90deg, #ffb067, #ffcf91);
   padding: 12px 24px;
   border-radius: 20px;
-  box-shadow: var(--shadow-orange);
+  box-shadow: 0 4px 10px rgba(255, 180, 100, 0.3);
+  color: #fff;
   position: sticky;
   top: 10px;
-  color: var(--white);
   z-index: 10;
 }
+
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
-  color: var(--white);
+  color: #fff;
   text-shadow: 2px 2px 4px rgba(255, 100, 50, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 8px;
   transition: transform 0.3s ease;
 }
+
 .logo:hover {
   transform: scale(1.1) rotate(-3deg);
 }
+
 nav {
   display: flex;
   gap: 14px;
 }
+
 nav a {
   text-decoration: none;
   padding: 8px 14px;
   border-radius: 12px;
-  color: var(--white);
+  color: #fff;
   font-weight: 600;
-  background: rgba(255,255,255,0.15);
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+nav a:hover {
+  background: #fff;
+  color: #ff944d;
+  box-shadow: 0 4px 10px rgba(255, 180, 100, 0.3);
+  transform: translateY(-2px);
+}
+
+.header nav a {
+  margin: 0 10px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.header nav a:hover {
+  text-decoration: underline;
+}
+
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.btn {
+  display: inline-block;
+  background: #aee6d3;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
   transition: 0.3s;
 }
-nav a:hover {
-  background: var(--white);
-  color: var(--orange-highlight);
-  box-shadow: var(--shadow-orange);
+
+.btn:hover {
+  background: #8ed5bc;
 }
+
+.btn.secondary {
+  background: #ffcf9f;
+}
+
 .card {
-  background: var(--white);
-  border-radius: var(--radius);
+  background: #fff;
+  border-radius: 15px;
   padding: 20px;
   margin: 15px 0;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
+
 .grid {
   display: grid;
-  gap: 15px;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
 }
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  color: #777;
+}
+
 .small {
   font-size: 0.9em;
   color: #555;
 }
-.btn-base,
-button,
-.adopt-btn,
-.submit-btn {
-  background: linear-gradient(135deg, var(--orange-light), var(--yellow-1));
-  color: var(--brown);
-  font-weight: 600;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 4px 10px rgba(255, 170, 0, 0.25);
-}
-.btn-base:hover,
-button:hover,
-.adopt-btn:hover,
-.submit-btn:hover {
-  background: linear-gradient(135deg, var(--yellow-2), var(--yellow-1));
-  transform: translateY(-2px);
-}
-.submit-btn {
+
+.water-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #ebe98e, #f8bc84, #f3a45b);
+  background-size: 200% 200%;
+  animation: slowMove 10s ease-in-out infinite alternate;
+  z-index: -1;
+  transition: background-position 0.25s ease-out;
+  filter: brightness(1.1) saturate(1.2);
+}
+
+/* === Волонтерська форма === */
+.volunteer-card {
+  max-width: 400px;
+  margin: 60px auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(255, 170, 80, 0.15);
+  padding: 30px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.volunteer-card:hover {
+  transform: translateY(-4px);
+}
+
+.form-title {
+  color: #ff8c42;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+.volunteer-form input {
+  display: block;
+  width: 90%;
+  padding: 12px 15px;
+  margin: 10px auto;
   border-radius: 10px;
-  background: linear-gradient(90deg, var(--blue-1), var(--blue-2));
-  color: var(--white);
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #fffaf4;
 }
-.submit-btn:hover {
-  background: linear-gradient(90deg, var(--blue-3), var(--blue-1));
+
+.volunteer-form input:focus {
+  border-color: #4895ef;
+  box-shadow: 0 0 8px rgba(72,149,239,0.3);
+  background: #ffffff;
 }
-.dog-photo {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 8px;
-  box-shadow: var(--shadow-soft);
-}
-.adopted {
+
+.submit-btn {
+  width: 95%;
   margin-top: 10px;
-  font-weight: bold;
-  color: var(--orange-dark);
+  background: linear-gradient(135deg, #4cc9f0, #4895ef);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
+
+.submit-btn:hover {
+  transform: scale(1.03);
+  background: linear-gradient(135deg, #4895ef, #4361ee);
+}
+
+/* Кнопка повернення */
+.back-btn {
+  display: inline-block;
+  margin-top: 25px;
+  color: #4895ef;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.back-btn:hover {
+  color: #4361ee;
+  text-decoration: underline;
+}
+
+/* === ПОКРАЩЕНИЙ ДИЗАЙН ПОШУКУ === */
 .filters {
   display: flex;
+  align-items: center;
   gap: 10px;
-  background: rgba(255,255,255,0.4);
+  background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(6px);
   border-radius: 12px;
   padding: 10px 15px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
   width: fit-content;
   margin: 20px auto;
-  box-shadow: var(--shadow-soft);
 }
+
+.filters label {
+  font-weight: bold;
+  color: #5c3d00;
+}
+
 #searchDog {
   border: none;
   border-radius: 20px;
   padding: 8px 14px 8px 32px;
   font-size: 14px;
-  background: #fff 
-    url('https://cdn-icons-png.flaticon.com/512/622/622669.png') no-repeat 8px center;
-  background-size: 16px;
-  box-shadow: var(--shadow-soft);
   outline: none;
+  background: #fff url('https://cdn-icons-png.flaticon.com/512/622/622669.png') no-repeat 8px center;
+  background-size: 16px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  transition: all 0.25s ease;
 }
+
+#searchDog:focus {
+  box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.3);
+}
+
+/* === КНОПКА “УСИНОВИТИ” === */
+button, .adopt-btn {
+  background: linear-gradient(135deg, #ffb347, #ffcc33);
+  color: #4a3000;
+  font-weight: 600;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 170, 0, 0.25);
+}
+
+button:hover, .adopt-btn:hover {
+  background: linear-gradient(135deg, #ffd65b, #ffe680);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(255, 170, 0, 0.35);
+}
+
+button:active, .adopt-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 5px rgba(255, 170, 0, 0.2);
+}
+
+/* === Команда === */
 .team-grid {
   display: grid;
-  gap: 25px;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 25px;
 }
-.card.person {
+
+.team-grid .card.person {
   text-align: center;
-  transition: 0.3s;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.card.person:hover {
+
+.team-grid .card.person:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
-.card.person img {
+
+.team-grid .card.person img {
   width: 50%;
-  max-width: 160px;
+  max-width: 160px;       /* обмежуємо фото */
+  height: auto;
   border-radius: 12px;
+  object-fit: cover;
   margin-bottom: 10px;
 }
-.two-column {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
+
+.team-grid .card.person h3 {
+  margin: 10px 0 5px;
+  color: #4a3000;
 }
-.box {
-  flex: 1 1 45%;
-  background: var(--white);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-soft);
-  padding: 20px;
-}
-footer,
-.motivational-footer {
-  text-align: center;
-  padding: 20px;
+
+.team-grid .card.person p.small {
+  color: #555;
+  font-size: 0.95em;
 }
 
 .motivational-footer {
+  text-align: center;
   font-size: 1.2rem;
   font-weight: 600;
-  background: linear-gradient(90deg, #ffd89b, var(--orange-light));
+  color: #4a3000;
+  background: linear-gradient(90deg, #ffd89b, #ffb067);
+  padding: 20px;
+  margin-top: 40px;
   border-radius: 16px 16px 0 0;
+  box-shadow: 0 -4px 10px rgba(255, 180, 100, 0.3);
+  position: relative;
+  z-index: 2;
   animation: glow 3s ease-in-out infinite alternate;
 }
 
 @keyframes glow {
   from { text-shadow: 0 0 5px rgba(255, 150, 50, 0.4); }
-  to   { text-shadow: 0 0 15px rgba(255, 120, 30, 0.8); }
+  to { text-shadow: 0 0 15px rgba(255, 120, 30, 0.8); }
 }
+
+/* === Donate Page Styles === */
+.donate-layout {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.donor-list, .donate-benefits {
+  flex: 1 1 45%;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+.donor-list h2, .donate-benefits h2 {
+  color: #f57c00;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.donor-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.donor-list li {
+  background: #f7f7f7;
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.donate-benefits ul {
+  list-style-type: "💖 ";
+  padding-left: 20px;
+}
+
+.donate-benefits li {
+  margin-bottom: 10px;
+}
+
+.donate-form {
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  margin-top: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.donate-form input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.submit-btn {
+  background: linear-gradient(90deg, #2196f3, #42a5f5);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  width: 100%;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(90deg, #1976d2, #2196f3);
+}
+
+.back-btn {
+  display: block;
+  margin-top: 15px;
+  text-align: center;
+  color: #1565c0;
+  text-decoration: none;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+/* === Volunteer Page Styles === */
+.volunteer-layout {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.volunteer-list, .volunteer-benefits {
+  flex: 1 1 45%;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+.volunteer-list h2, .volunteer-benefits h2 {
+  color: #f57c00;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.volunteer-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.volunteer-list li {
+  background: #f7f7f7;
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.volunteer-benefits ul {
+  list-style-type: "⭐ ";
+  padding-left: 20px;
+}
+
+.volunteer-benefits li {
+  margin-bottom: 10px;
+}
+
+.volunteer-form {
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  margin-top: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.volunteer-form input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.submit-btn {
+  background: linear-gradient(90deg, #2196f3, #42a5f5);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  width: 100%;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(90deg, #1976d2, #2196f3);
+}
+
+.back-btn {
+  display: block;
+  margin-top: 15px;
+  text-align: center;
+  color: #1565c0;
+  text-decoration: none;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+@keyframes slowMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
