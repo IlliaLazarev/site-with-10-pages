@@ -8,7 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   fetch('./data.json')
     .then(r => {
-      if (!r.ok) throw new Error('Не вдалося завантажити data.json: ' + r.status);
+      if (!r.ok) {
+        throw new Error('Не вдалося завантажити data.json: ' + r.status);
+      }
       return r.json();
     })
     .then(dogs => {
@@ -17,32 +19,38 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(err => {
       console.error('Помилка завантаження собак:', err);
-      dogsContainer.innerHTML = '<div class="card small">❌ Не вдалося завантажити собак</div>';
+      dogsContainer.innerHTML =
+        '<div class="card small">❌ Не вдалося завантажити собак</div>';
     });
 
+  // Пошук по імені
   if (searchInput) {
     searchInput.addEventListener('input', () => {
       const query = searchInput.value.toLowerCase().trim();
-      const filtered = allDogs.filter(d => d.name.toLowerCase().includes(query));
+      const filtered = allDogs.filter(d =>
+        d.name.toLowerCase().includes(query)
+      );
       renderDogs(filtered);
     });
   }
 
+  // Рендер списку собак
   function renderDogs(dogs) {
     if (!dogs || dogs.length === 0) {
-      dogsContainer.innerHTML = `<div class="card small">🐾 Нічого не знайдено</div>`;
+      dogsContainer.innerHTML =
+        '<div class="card small">🐾 Нічого не знайдено</div>';
       return;
     }
     dogsContainer.innerHTML = dogs.map(renderDogCard).join('');
-    addAdoptListeners();
+    addAdoptListeners(); 
   }
 });
-
 function renderDogCard(d) {
   const imgSrc = d.image || 'images/default-dog.png';
   const adopted = d.adopted
-    ? `<div class="adopted">🐾 Усиновлено</div>`
+    ? '<div class="adopted">🐾 Усиновлено</div>'
     : `<button class="adopt-btn" data-id="${d.id}">Усиновити</button>`;
+
   return `
     <div class="card dog" id="dog-${d.id}">
       <img src="${imgSrc}" alt="${escapeHtml(d.name)}" class="dog-photo">
@@ -53,7 +61,19 @@ function renderDogCard(d) {
     </div>
   `;
 }
+function addAdoptListeners() {
+  document.querySelectorAll('.adopt-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const card = btn.closest('.dog');
+      if (card) {
+        btn.outerHTML = '<div class="adopted">🐾 Усиновлено</div>';
+      }
 
+      alert('Дякуємо! У цій онлайн-версії усиновлення демонстраційне 💛');
+    });
+  });
+}
 function escapeHtml(s) {
   if (!s) return '';
   return String(s)
