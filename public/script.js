@@ -22,8 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
       dogsContainer.innerHTML =
         '<div class="card small">❌ Не вдалося завантажити собак</div>';
     });
-
-  // Пошук по імені
   if (searchInput) {
     searchInput.addEventListener('input', () => {
       const query = searchInput.value.toLowerCase().trim();
@@ -33,8 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
       renderDogs(filtered);
     });
   }
-
-  // Рендер списку собак
   function renderDogs(dogs) {
     if (!dogs || dogs.length === 0) {
       dogsContainer.innerHTML =
@@ -42,9 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     dogsContainer.innerHTML = dogs.map(renderDogCard).join('');
-    addAdoptListeners(); 
+    addAdoptListeners();
   }
 });
+
 function renderDogCard(d) {
   const imgSrc = d.image || 'images/default-dog.png';
   const adopted = d.adopted
@@ -65,15 +62,42 @@ function addAdoptListeners() {
   document.querySelectorAll('.adopt-btn').forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();
-      const card = btn.closest('.dog');
-      if (card) {
-        btn.outerHTML = '<div class="adopted">🐾 Усиновлено</div>';
-      }
 
-      alert('Дякуємо! У цій онлайн-версії усиновлення демонстраційне 💛');
+      const dogCard = btn.closest('.dog');
+
+      const popup = document.createElement("div");
+      popup.className = "adopt-popup";
+      popup.innerHTML = `
+        <div class="adopt-box">
+          <h3>Усиновлення собаки 🐶</h3>
+          <input type="text" id="adoptName" placeholder="Ваше ім'я">
+          <input type="email" id="adoptEmail" placeholder="Ваш Email">
+          <button id="confirmAdopt">Підтвердити</button>
+          <button id="closeAdopt" class="close-btn">Закрити</button>
+        </div>
+      `;
+      document.body.appendChild(popup);
+      document.getElementById("closeAdopt").onclick = () => {
+        popup.remove();
+      };
+      document.getElementById("confirmAdopt").onclick = () => {
+        const name = document.getElementById("adoptName").value.trim();
+        const email = document.getElementById("adoptEmail").value.trim();
+
+        if (!name || !email) {
+          alert("Будь ласка, заповніть всі поля!");
+          return;
+        }
+
+        alert(`Дякуємо за усиновлення, ${name}! ❤️🐾`);
+        btn.outerHTML = '<div class="adopted">🐾 Усиновлено</div>';
+
+        popup.remove();
+      };
     });
   });
 }
+
 function escapeHtml(s) {
   if (!s) return '';
   return String(s)
