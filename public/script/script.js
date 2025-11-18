@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let allDogs = [];
 
-  fetch('./data.json')
+  fetch('./data/data.json')
     .then(r => {
       if (!r.ok) {
         throw new Error('Не вдалося завантажити data.json:' + r.status);
@@ -50,7 +50,7 @@ function renderDogCard(d) {
 
   return `
     <div class="card dog" id="dog-${d.id}">
-      <img src="${imgSrc}" alt="${escapeHtml(d.name)}" class="dog-photo">
+      <img src="./static/img/${imgSrc}" alt="${escapeHtml(d.name)}" class="dog-photo">
       <h4>${escapeHtml(d.name)}</h4>
       <div class="small">${escapeHtml(d.description || '')}</div>
       <div class="small">Вік: ${d.age || ''}</div>

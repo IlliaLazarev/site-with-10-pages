@@ -218,7 +218,6 @@ footer {
   background: #ffffff;
 }
 
-Illia, [18.11.2025 1:21]
 .submit-btn {
   width: 95%;
   margin-top: 10px;
@@ -419,7 +418,6 @@ button:active, .adopt-btn:active {
   margin-bottom: 10px;
 }
 
-Illia, [18.11.2025 1:21]
 .donate-form {
   background: #fff;
   border-radius: 16px;
@@ -614,5 +612,31 @@ Illia, [18.11.2025 1:21]
   }
   100% {
     background-position: 100% 50%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 600px) {
+  nav {
+    background-color: lightblue !important;
+    color: yellow !important;
   }
 }
