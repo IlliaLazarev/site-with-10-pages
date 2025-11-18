@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   fetch('./data.json')
     .then(r => {
       if (!r.ok) {
-        throw new Error('Не вдалося завантажити data.json: ' + r.status);
+        throw new Error('Не вдалося завантажити data.json:' + r.status);
       }
       return r.json();
     })
